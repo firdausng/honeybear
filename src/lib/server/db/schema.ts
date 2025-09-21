@@ -34,10 +34,46 @@ export const products = sqliteTable("products", {
     deletedBy: text('deleted_by',),
 });
 
+// export const variants = sqliteTable("products", {
+//     id: integer().primaryKey({ autoIncrement: true }),
+//     name: text().notNull(),
+//     sku: text().notNull().unique(),
+//     status: text().notNull(),
+//     stock: integer({ mode: 'number' }).notNull(),
+//     price: text().notNull(),
+//     imagePath: text().notNull(),
+//    
+//     createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
+//     updatedAt: integer('updated_at', { mode: 'timestamp' }),
+//     deletedAt: integer('deleted_at', { mode: 'timestamp' }),
+//     createdBy: text('created_by',).notNull(),
+//     updatedBy: text('updated_by',),
+//     deletedBy: text('deleted_by',),
+// });
+
+// export const modifiers = sqliteTable("products", {
+//     id: integer().primaryKey({ autoIncrement: true }),
+//     name: text().notNull(),
+//     description: text(),
+//     sku: text().notNull().unique(),
+//     status: text().notNull(),
+//     stock: integer({ mode: 'number' }).notNull(),
+//     isFeatured: integer({ mode: 'boolean' }).notNull(),
+//     price: text().notNull(),
+//     imagePath: text().notNull(),
+//     createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
+//     updatedAt: integer('updated_at', { mode: 'timestamp' }),
+//     deletedAt: integer('deleted_at', { mode: 'timestamp' }),
+//     createdBy: text('created_by',).notNull(),
+//     updatedBy: text('updated_by',),
+//     deletedBy: text('deleted_by',),
+// });
+
 export const categories = sqliteTable("categories", {
     id: integer().primaryKey({ autoIncrement: true }),
     name: text().notNull(),
     description: text(),
+    status: text(),
     createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
     updatedAt: integer('updated_at', { mode: 'timestamp' }),
     deletedAt: integer('deleted_at', { mode: 'timestamp' }),

@@ -13,6 +13,7 @@ export const GET: RequestHandler = async ({  platform, url, locals, cookies }) =
     }
 
     const authResponse = await locals.authService.authenticateWithCode(code);
+    console.log("[callback] ", authResponse)
 
     if(authResponse.sealedSession === undefined){
         throw new Error("No Session")

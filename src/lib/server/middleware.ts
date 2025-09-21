@@ -1,6 +1,4 @@
 ﻿import {type Handle} from "@sveltejs/kit";
-import {GetCatalogHandler} from "$lib/server/products/getCatalog";
-import {GetProductHandler} from "$lib/server/products/getProduct";
 import {AuthService} from "$lib/server/auth-service.svelte";
 import {COOKIE_SESSION} from "$lib/server/constants";
 import {VerifyUserByEmailCommandHandler} from "$lib/server/auth/verifyUserByEmail";
@@ -17,8 +15,6 @@ export const setupServicesHandler: Handle = async ({ event, resolve }) => {
     if(db === undefined){
         throw new Error("Database not defined");
     }
-    event.locals.getCatalog = new GetCatalogHandler(db);
-    event.locals.getProduct = new GetProductHandler(db);
     event.locals.verifyUserByEmail = new VerifyUserByEmailCommandHandler(db);
     event.locals.addProductHandler = new AddProductHandler(db);
     event.locals.authService = new AuthService(event.platform.env.WORKOS_API_KEY, event.platform.env.WORKOS_CLIENT_ID, event.platform.env.BASE_PATH, event.platform.env.WORKOS_COOKIE_PASSWORD);
