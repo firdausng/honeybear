@@ -4,7 +4,15 @@
 declare namespace Cloudflare {
 	interface Env {
 		DATABASE_URL: string;
+        MY_VARIABLE: string;
+        BASE_PATH: string;
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: string;
+        CLERK_SECRET_KEY: string;
+        WORKOS_API_KEY: string;
+        WORKOS_CLIENT_ID: string;
+        WORKOS_COOKIE_PASSWORD: string;
 		ASSETS: Fetcher;
+        DB: D1Database;
 	}
 }
 interface Env extends Cloudflare.Env {}

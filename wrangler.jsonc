@@ -16,7 +16,15 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_id": "abcdabcd-abcd-abcd-abcd-abcdabcdabcd",
+        "database_name": "bikesynergy",
+        "migrations_dir": "migrations"
+      }
+    ],
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -32,7 +40,10 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" }
+	 "vars": { 
+       "MY_VARIABLE": "firdaus testing",
+       "BASE_PATH": "http://localhost:9000"
+     }
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/

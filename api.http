@@ -1,0 +1,15 @@
+### GET request to example server
+POST http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "firdaus",
+    "email": "firdaus@a.com",
+    "password": "password"
+}
+
+###
+### GET request to example server
+GET http://localhost:9000/api/products
+#Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InNzb19vaWRjX2tleV9wYWlyXzAxSzU4R1g0R0VLMEZCMUZTOU04SDQ2WUJKIn0.eyJpc3MiOiJodHRwczovL2FwaS53b3Jrb3MuY29tL3VzZXJfbWFuYWdlbWVudC9jbGllbnRfMDFLNThHWDRTMEszOTlTRlJaQjcxQUpRNFoiLCJzdWIiOiJ1c2VyXzAxSzU4UFFEMVFSTkZSUTk2U01EUllLWk1LIiwic2lkIjoic2Vzc2lvbl8wMUs1QTZLQlJEOTczTk00UTNDSkhXVkU3UiIsImp0aSI6IjAxSzVBNlE1VEIyWUhLU0IwMk1OMjMxQTBOIiwib3JnX2lkIjoib3JnXzAxSzU4R1g0SkNOU1I3M0QwWEpEWlpXMjJXIiwicm9sZSI6ImFkbWluIiwicm9sZXMiOlsiYWRtaW4iXSwicGVybWlzc2lvbnMiOlsid2lkZ2V0czp1c2Vycy10YWJsZTptYW5hZ2UiXSwiZXhwIjoxNzU4MDU4MjYxLCJpYXQiOjE3NTgwNTc5NjF9.ehMnybDAxWb9UmHFXLYC9R7P8Z2yCoQK-koNSTwe_35VPnjIlud51WR3ifcOg0cpOn51co27jI6vTimLI1cFmxjj5fIAUR2cpamWKYtQfH2D5qmGnvxWmmoaqWc7efVgbuKjD34Jm_ZLiqXu1Qp5aFTYBCXx4d95DErzVzDdGX9JeVbrMgq06eejoR1n1YX1ckhBQEsH6ootSHkLFCEmv3igJJbi0xMfD0d5RL9oeLeggPg2U2gt0111LxykZoggR-Qi7ECUM-6phG1SFPhM0rDdGS1z1iUe8JmWB314ewbrhLHqYzQ7RsqV-nD43iwufy2s4gnjxwJ0FlMsyt7Rtg
+###
