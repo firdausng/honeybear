@@ -24,16 +24,16 @@
     let isOpen = $state(false);
 </script>
 
-<button onclick={() => (isOpen = true)}>
-    <Eye class="w-4 h-4" />
+<button onclick={() => (isOpen = true)} class="theme-transition-fast">
+    <Eye class="w-4 h-4 theme-transition" />
 </button>
 <Dialog.Root bind:open={isOpen}>
     <Dialog.Portal>
         <Dialog.Overlay
-                class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20"
+                class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20 theme-transition"
         />
         <Dialog.Content
-                class="rounded-xl bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-border-card shadow-lg p-5 md:w-full max-h-[90vh] flex flex-col"
+                class="rounded-xl bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-border-card shadow-lg p-5 md:w-full max-h-[90vh] flex flex-col theme-transition"
         >
             <Dialog.Title
                     class="flex w-full items-center justify-center text-lg font-semibold tracking-tight flex-shrink-0"
@@ -50,7 +50,7 @@
                 <div class="space-y-6">
                     <!-- Order Overview -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 theme-transition">
                             <div class="flex items-center space-x-2 mb-2">
                                 <!--                                    <Clock class="w-4 h-4 text-gray-500" />-->
                                 <h3 class="font-medium text-gray-900 dark:text-white">Order Status</h3>
@@ -63,7 +63,7 @@
                             </p>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 theme-transition">
                             <div class="flex items-center space-x-2 mb-2">
                                 <!--                                    <User class="w-4 h-4 text-gray-500" />-->
                                 <h3 class="font-medium text-gray-900 dark:text-white">Customer</h3>
@@ -72,9 +72,9 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400">{order.customerEmail}</p>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 theme-transition">
                             <div class="flex items-center space-x-2 mb-2">
-                                <Package class="w-4 h-4 text-gray-500" />
+                                <Package class="w-4 h-4 text-gray-500 theme-transition" />
                                 <h3 class="font-medium text-gray-900 dark:text-white">Order Total</h3>
                             </div>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">${order.total.toFixed(2)}</p>
@@ -83,7 +83,7 @@
                     </div>
 
                     <!-- Shipping Address  -->
-                    <div class="bg-background-alt border border-border-card rounded-lg p-4">
+                    <div class="bg-background-alt border border-border-card rounded-lg p-4 theme-transition">
                         <div class="flex items-center space-x-2 mb-3">
                             <!--                                <MapPin class="w-4 h-4 text-gray-500" />-->
                             <h3 class="font-medium text-gray-900 dark:text-white">Shipping Address</h3>
@@ -98,7 +98,7 @@
                     </div>
 
                     <!-- Order Items -->
-                    <div class="bg-background-alt border border-border-card rounded-lg overflow-hidden">
+                    <div class="bg-background-alt border border-border-card rounded-lg overflow-hidden theme-transition">
                         <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                             <h3 class="font-medium text-gray-900 dark:text-white">Order Items</h3>
                         </div>
@@ -129,16 +129,16 @@
             <!-- Fixed footer with close button -->
             <div class="flex w-full justify-end pt-4 flex-shrink-0">
                 <Dialog.Close
-                        class="h-input rounded-input bg-accent text-accent-foreground shadow-mini hover:bg-accent focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden inline-flex items-center justify-center px-[50px] text-[15px] font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
+                        class="h-input rounded-input bg-accent text-accent-foreground shadow-mini hover:bg-accent focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden inline-flex items-center justify-center px-[50px] text-[15px] font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] theme-transition-fast"
                 >
                     Close
                 </Dialog.Close>
             </div>
             <Dialog.Close
-                    class="focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
+                    class="focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus:ring-offset-2 active:scale-[0.98] theme-transition-fast"
             >
                 <div>
-                    <X class="text-foreground size-5" />
+                    <X class="text-foreground size-5 theme-transition" />
                     <span class="sr-only">Close</span>
                 </div>
             </Dialog.Close>

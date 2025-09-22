@@ -14,7 +14,7 @@
 <!--    {JSON.stringify(data.activeUser, null, 2)}-->
 <!--</pre>-->
 
-<div class="space-y-6">
+<div class="space-y-6 theme-transition">
     <!--    Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <!--{@render StatCard({-->
@@ -53,13 +53,13 @@
     </div>
 
     <!--  Recent Orders  -->
-    <div class="bg-background-alt rounded-xl shadow-sm border border-border-card">
-        <div class="px-6 py-4 border-b border-border-card">
-            <h3 class="text-lg font-semibold text-foreground">Recent Orders</h3>
+    <div class="bg-background-alt rounded-xl shadow-sm border border-border-card theme-transition">
+        <div class="px-6 py-4 border-b border-border-card theme-transition">
+            <h3 class="text-lg font-semibold text-foreground theme-transition">Recent Orders</h3>
         </div>
         <div class="overflow-x-auto">
-            <table class="w-full">
-                <thead class="bg-muted">
+            <table class="w-full theme-transition">
+                <thead class="bg-muted theme-transition">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Order ID
@@ -78,9 +78,9 @@
                     </th>
                 </tr>
                 </thead>
-                <tbody class="bg-background-alt divide-y divide-border-card">
+                <tbody class="bg-background-alt divide-y divide-border-card theme-transition">
                 {#each data.orders as order (order.id)}
-                    <tr class="hover:bg-muted">
+                    <tr class="hover:bg-muted theme-transition-fast">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground">
                             {order.id}
                         </td>
@@ -124,7 +124,7 @@
 })}
     {@const isPositive = change && change > 0}
 
-    <div class="bg-background-alt rounded-xl shadow-sm p-6 border border-border-card">
+    <div class="bg-background-alt rounded-xl shadow-sm p-6 border border-border-card theme-transition">
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm font-medium text-foreground-alt">{title}</p>
@@ -133,12 +133,12 @@
                     <div class="flex items-center mt-2 {isPositive ? 'text-green-600' : 'text-red-600'}">
                         {#if isPositive}
                             <!-- TrendingUp icon -->
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mr-1 theme-transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                             </svg>
                         {:else}
                             <!-- TrendingDown icon -->
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mr-1 theme-transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
                             </svg>
                         {/if}

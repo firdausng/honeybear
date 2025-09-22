@@ -18,21 +18,21 @@
 
 </script>
 
-<div class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-background shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none">
+<div class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-background shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none theme-transition">
     <div class="lg:hidden absolute top-4 right-4">
         <button
                 onclick={()=> {sidebarOpen = false}}
-class="p-2 text-muted-foreground hover:text-foreground transition-colors">
+class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast">
             close
         </button>
     </div>
 
-<div class="p-6 border-b border-border-card">
+<div class="p-6 border-b border-border-card theme-transition">
         <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                <Package class="w-5 h-5 text-accent-foreground" />
+            <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center theme-transition">
+                <Package class="w-5 h-5 text-accent-foreground theme-transition" />
             </div>
-<h1 class="text-xl font-bold text-foreground">ShopAdmin</h1>
+<h1 class="text-xl font-bold text-foreground theme-transition">ShopAdmin</h1>
         </div>
     </div>
 
@@ -40,7 +40,7 @@ class="p-2 text-muted-foreground hover:text-foreground transition-colors">
         {#each menuItems as item}
             <a
                 href={item.path}
-class="w-full flex items-center space-x-3 px-6 py-3 text-left transition-colors {item.id === activeSection.id ? 'bg-muted text-foreground' : 'text-muted-foreground hover:bg-background-alt hover:text-foreground'}"
+class="w-full flex items-center space-x-3 px-6 py-3 text-left theme-transition-fast {item.id === activeSection.id ? 'bg-muted text-foreground' : 'text-muted-foreground hover:bg-background-alt hover:text-foreground'}"
             >
                 <item.icon class="w-5 h-5" />
                 <span class="font-medium">{item.label}</span>

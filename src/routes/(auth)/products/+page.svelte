@@ -148,23 +148,23 @@
 <!--    {JSON.stringify(data.activeUser, null, 2)}-->
 <!--</pre>-->
 <!--{JSON.stringify(form, null, 2)}-->
-<div class="space-y-6">
+<div class="space-y-6 theme-transition">
     <!--  Header Actions  -->
     <div class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
         <div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
-            <div class="relative">
-                <MagnifyingGlass class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <div class="relative theme-transition">
+                <MagnifyingGlass class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 theme-transition" />
                 <input
                         type="text"
                         placeholder="Search products..."
                         bind:value={searchTerm}
-                        class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-full sm:w-80"
+                        class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-full sm:w-80 theme-transition"
                 />
             </div>
 
             <select
                     bind:value={categoryFilter}
-                    class="px-4 py-2 border border-border-input bg-background-alt text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-full sm:w-auto"
+                    class="px-4 py-2 border border-border-input bg-background-alt text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-full sm:w-auto theme-transition"
             >
                 {#each categories as category (category)}
                     <option value={category}>
@@ -176,34 +176,34 @@
 
         <div class="flex items-center space-x-2">
             <!-- View Mode Toggle -->
-            <div class="flex bg-muted rounded-lg p-1">
+            <div class="flex bg-muted rounded-lg p-1 theme-transition">
                 <button
                     onclick={() => viewMode = 'grid'}
-                    class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    class={`px-3 py-2 rounded-md text-sm font-medium theme-transition-fast ${
                         viewMode === 'grid'
                             ? 'bg-background text-foreground shadow-sm'
                             : 'text-muted-foreground hover:text-foreground'
                     }`}
                 >
-                    <GridFour class="w-4 h-4" />
+                    <GridFour class="w-4 h-4 theme-transition" />
                 </button>
                 <button
                     onclick={() => viewMode = 'list'}
-                    class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    class={`px-3 py-2 rounded-md text-sm font-medium theme-transition-fast ${
                         viewMode === 'list'
                             ? 'bg-background text-foreground shadow-sm'
                             : 'text-muted-foreground hover:text-foreground'
                     }`}
                 >
-                    <List class="w-4 h-4" />
+                    <List class="w-4 h-4 theme-transition" />
                 </button>
             </div>
 
             <button
                     onclick={()=>{isProductDialogOpen= true;}}
-                    class="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto"
+                    class="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-lg flex items-center justify-center space-x-2 theme-transition-fast w-full sm:w-auto"
             >
-                <Plus class="w-4 h-4" />
+                <Plus class="w-4 h-4 theme-transition" />
                 <span>Add Product</span>
             </button>
         </div>
@@ -217,19 +217,19 @@
                         in:receive={{ key: product.id }}
                         out:send={{ key: product.id }}
                         animate:flip={{ duration: 200 }}
-                        class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden hover:shadow-md transition-shadow">
-                    <div class="aspect-square bg-muted overflow-hidden">
+                        class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden hover:shadow-md theme-transition">
+                    <div class="aspect-square bg-muted overflow-hidden theme-transition">
                         <img
                                 src={product.imagePath}
                                 alt={product.name}
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                class="w-full h-full object-cover hover:scale-105 theme-transition"
                         />
                     </div>
 
-                    <div class="p-4">
+                    <div class="p-4 theme-transition">
                         <div class="flex items-start justify-between mb-2">
                             <h3 class="font-semibold text-foreground text-sm line-clamp-2">{product.name}</h3>
-                            <span class={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(product.status)}`}>
+                            <span class={`px-2 py-1 text-xs font-medium rounded-full theme-transition ${getStatusColor(product.status)}`}>
                       {product.status.replace('_', ' ')}
                     </span>
                         </div>
@@ -244,27 +244,27 @@
                         <div class="flex items-center space-x-1">
                             <a
                                     href="/products/{product.id}"
-                                    class="flex-1 bg-muted hover:bg-muted/80 text-foreground px-2 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+                                    class="flex-1 bg-muted hover:bg-muted/80 text-foreground px-2 py-2 rounded-lg text-xs font-medium theme-transition-fast flex items-center justify-center space-x-1"
                             >
-                                <Eye class="w-3 h-3" />
+                                <Eye class="w-3 h-3 theme-transition" />
                                 <span>View</span>
                             </a>
                             <button
                                     onclick={() => onEditProduct(product)}
-                                    class="flex-1 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 px-2 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+                                    class="flex-1 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 px-2 py-2 rounded-lg text-xs font-medium theme-transition-fast flex items-center justify-center space-x-1"
                             >
-                                <PencilLine class="w-3 h-3" />
+                                <PencilLine class="w-3 h-3 theme-transition" />
                                 <span>Edit</span>
                             </button>
                             <button
                                     onclick={() => onCopyProduct(product)}
-                                    class="flex-1 bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-900/50 text-green-600 dark:text-green-400 px-2 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+                                    class="flex-1 bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-900/50 text-green-600 dark:text-green-400 px-2 py-2 rounded-lg text-xs font-medium theme-transition-fast flex items-center justify-center space-x-1"
                             >
-                                <Copy class="w-3 h-3" />
+                                <Copy class="w-3 h-3 theme-transition" />
                                 <span>Copy</span>
                             </button>
-                            <button class="flex-1 bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 px-2 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1">
-                                <Trash class="w-3 h-3" />
+                            <button class="flex-1 bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 px-2 py-2 rounded-lg text-xs font-medium theme-transition-fast flex items-center justify-center space-x-1">
+                                <Trash class="w-3 h-3 theme-transition" />
                                 <span>Delete</span>
                             </button>
                         </div>
@@ -277,7 +277,7 @@
     <!-- Bulk Actions Toolbar -->
     {#if viewMode === 'list' && selectedProductIds.size > 0}
         <div
-            class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4"
+            class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4 theme-transition"
             transition:slide={{
                 duration: 200,
                 easing: cubicOut
@@ -290,7 +290,7 @@
                     </span>
                     <button
                         onclick={clearSelection}
-                        class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 underline"
+                        class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 underline theme-transition-fast"
                     >
                         Clear selection
                     </button>
@@ -298,16 +298,16 @@
                 <div class="flex items-center space-x-2">
                     <button
                         onclick={onBulkCopy}
-                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 theme-transition-fast"
                     >
-                        <Copy class="w-4 h-4 mr-2" />
+                        <Copy class="w-4 h-4 mr-2 theme-transition" />
                         Copy Selected
                     </button>
                     <button
                         onclick={onBulkDelete}
-                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-red-700 dark:text-red-400 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-red-700 dark:text-red-400 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 theme-transition-fast"
                     >
-                        <Trash class="w-4 h-4 mr-2" />
+                        <Trash class="w-4 h-4 mr-2 theme-transition" />
                         Delete Selected
                     </button>
                 </div>
@@ -317,10 +317,10 @@
 
     <!-- Products List View -->
     {#if viewMode === 'list'}
-        <div class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden">
+        <div class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden theme-transition">
             <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-muted">
+                <table class="w-full theme-transition">
+                    <thead class="bg-muted theme-transition">
                     <tr>
                         <th class="px-3 sm:px-6 py-3 text-left">
                             <label class="flex items-center">
@@ -329,7 +329,7 @@
                                     checked={isAllSelected}
                                     indeterminate={isIndeterminate}
                                     onchange={toggleSelectAll}
-                                    class="h-4 w-4 text-accent focus:ring-accent border-border-input rounded"
+                                    class="h-4 w-4 text-accent focus:ring-accent border-border-input rounded theme-transition"
                                 />
                                 <span class="sr-only">Select all products</span>
                             </label>
@@ -354,9 +354,9 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="bg-background-alt divide-y divide-border-card">
+                    <tbody class="bg-background-alt divide-y divide-border-card theme-transition">
                     {#each filteredProducts as product (product.id)}
-                        <tr class="hover:bg-muted {selectedProductIds.has(product.id) ? 'bg-blue-50 dark:bg-blue-900/30' : ''}"
+                        <tr class="hover:bg-muted theme-transition-fast {selectedProductIds.has(product.id) ? 'bg-blue-50 dark:bg-blue-900/30' : ''}"
                             in:receive={{ key: product.id }}
                             out:send={{ key: product.id }}
                             animate:flip={{ duration: 200 }}>
@@ -366,7 +366,7 @@
                                         type="checkbox"
                                         checked={selectedProductIds.has(product.id)}
                                         onchange={() => toggleProductSelection(product.id)}
-                                        class="h-4 w-4 text-accent focus:ring-accent border-border-input rounded"
+                                        class="h-4 w-4 text-accent focus:ring-accent border-border-input rounded theme-transition"
                                     />
                                     <span class="sr-only">Select {product.name}</span>
                                 </label>
@@ -392,7 +392,7 @@
                                 {product.stock}
                             </td>
                             <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
-                                <span class={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(product.status)}`}>
+                                <span class={`px-2 py-1 text-xs font-medium rounded-full theme-transition ${getStatusColor(product.status)}`}>
                                     {product.status.replace('_', ' ')}
                                 </span>
                             </td>
@@ -400,30 +400,30 @@
                                 <div class="flex items-center space-x-2">
                                     <a
                                             href="/products/{product.id}"
-                                            class="text-foreground hover:text-foreground/80 transition-colors p-1 hover:bg-muted rounded"
+                                            class="text-foreground hover:text-foreground/80 theme-transition-fast p-1 hover:bg-muted rounded"
                                             title="View Product"
                                     >
-                                        <Eye class="w-4 h-4" />
+                                        <Eye class="w-4 h-4 theme-transition" />
                                     </a>
                                     <button
                                             onclick={() => onEditProduct(product)}
-                                            class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors p-1 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded"
+                                            class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-200 theme-transition-fast p-1 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded"
                                             title="Edit Product"
                                     >
-                                        <PencilLine class="w-4 h-4" />
+                                        <PencilLine class="w-4 h-4 theme-transition" />
                                     </button>
                                     <button
                                             onclick={() => onCopyProduct(product)}
-                                            class="text-green-600 dark:text-green-400 hover:text-green-900 dark:hover:text-green-200 transition-colors p-1 hover:bg-green-50 dark:hover:bg-green-900/30 rounded"
+                                            class="text-green-600 dark:text-green-400 hover:text-green-900 dark:hover:text-green-200 theme-transition-fast p-1 hover:bg-green-50 dark:hover:bg-green-900/30 rounded"
                                             title="Copy Product"
                                     >
-                                        <Copy class="w-4 h-4" />
+                                        <Copy class="w-4 h-4 theme-transition" />
                                     </button>
                                     <button
-                                            class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-200 transition-colors p-1 hover:bg-red-50 dark:hover:bg-red-900/30 rounded"
+                                            class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-200 theme-transition-fast p-1 hover:bg-red-50 dark:hover:bg-red-900/30 rounded"
                                             title="Delete Product"
                                     >
-                                        <Trash class="w-4 h-4" />
+                                        <Trash class="w-4 h-4 theme-transition" />
                                     </button>
                                 </div>
                             </td>
@@ -437,7 +437,7 @@
 
     {#if filteredProducts.length === 0}
         <div class="text-center py-12">
-            <Package class="mx-auto h-12 w-12 text-muted-foreground" />
+            <Package class="mx-auto h-12 w-12 text-muted-foreground theme-transition" />
             <h3 class="mt-2 text-sm font-medium text-foreground">No products found</h3>
             <p class="mt-1 text-sm text-foreground-alt">
                 {searchTerm || categoryFilter !== 'all'
@@ -460,7 +460,7 @@
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div
-                class="fixed inset-0 bg-black/40 transition-opacity"
+                class="fixed inset-0 bg-black/40 theme-transition"
                 onclick={() => isCopyModalOpen = false}
                 role="button"
                 tabindex="-1"
@@ -469,10 +469,10 @@
 
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-            <div class="relative inline-block align-bottom bg-background-alt rounded-lg shadow-xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+            <div class="relative inline-block align-bottom bg-background-alt rounded-lg shadow-xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform theme-transition sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
                     <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30">
-                        <Copy class="h-6 w-6 text-green-600 dark:text-green-400" />
+                        <Copy class="h-6 w-6 text-green-600 dark:text-green-400 theme-transition" />
                     </div>
                     <div class="mt-3 text-center sm:mt-5">
                         <h3 class="text-lg leading-6 font-medium text-foreground" id="modal-title">
@@ -500,14 +500,14 @@
                     <button
                             type="button"
                             onclick={onCreateFromCopy}
-                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm theme-transition-fast"
                     >
                         Create Copy
                     </button>
                     <button
                             type="button"
                             onclick={() => isCopyModalOpen = false}
-                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm theme-transition-fast"
                     >
                         Cancel
                     </button>
@@ -530,7 +530,7 @@
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div
-                class="fixed inset-0 bg-black/20"
+                class="fixed inset-0 bg-black/20 theme-transition"
                 onclick={() => isBulkCopyModalOpen = false}
                 role="button"
                 tabindex="-1"
@@ -540,7 +540,7 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
             <div
-                class="relative inline-block align-bottom bg-background-alt rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                class="relative inline-block align-bottom bg-background-alt rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform theme-transition sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
                 transition:scale={{
                     duration: 300,
                     start: 0.9,
@@ -549,7 +549,7 @@
             >
                 <div>
                     <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30">
-                        <Copy class="h-6 w-6 text-green-600 dark:text-green-400" />
+                        <Copy class="h-6 w-6 text-green-600 dark:text-green-400 theme-transition" />
                     </div>
                     <div class="mt-3 text-center sm:mt-5">
                         <h3 class="text-lg leading-6 font-medium text-foreground" id="modal-title">
@@ -566,14 +566,14 @@
                     <button
                             type="button"
                             onclick={onConfirmBulkCopy}
-                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm theme-transition-fast"
                     >
                         Create Copies
                     </button>
                     <button
                             type="button"
                             onclick={() => isBulkCopyModalOpen = false}
-                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm theme-transition-fast"
                     >
                         Cancel
                     </button>
@@ -596,7 +596,7 @@
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div
-                class="fixed inset-0 bg-black/20"
+                class="fixed inset-0 bg-black/20 theme-transition"
                 onclick={() => isBulkDeleteModalOpen = false}
                 role="button"
                 tabindex="-1"
@@ -606,7 +606,7 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
             <div
-                class="relative inline-block align-bottom bg-background-alt rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                class="relative inline-block align-bottom bg-background-alt rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform theme-transition sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
                 transition:scale={{
                     duration: 300,
                     start: 0.9,
@@ -615,7 +615,7 @@
             >
                 <div>
                     <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/30">
-                        <Trash class="h-6 w-6 text-red-600 dark:text-red-400" />
+                        <Trash class="h-6 w-6 text-red-600 dark:text-red-400 theme-transition" />
                     </div>
                     <div class="mt-3 text-center sm:mt-5">
                         <h3 class="text-lg leading-6 font-medium text-foreground" id="modal-title">
@@ -639,7 +639,7 @@
                     <button
                             type="button"
                             onclick={() => isBulkDeleteModalOpen = false}
-                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-border-input shadow-sm px-4 py-2 bg-background-alt text-base font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent sm:mt-0 sm:col-start-1 sm:text-sm theme-transition-fast"
                     >
                         Cancel
                     </button>

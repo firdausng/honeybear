@@ -45,22 +45,22 @@
 
 </script>
 
-<div class="space-y-6">
+<div class="space-y-6 theme-transition">
 <!--  Header Actions  -->
     <div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
-        <div class="relative">
-            <MagnifyingGlass class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+        <div class="relative theme-transition">
+            <MagnifyingGlass class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 theme-transition" />
             <input
                     type="text"
                     placeholder="Search orders..."
                     bind:value={searchTerm}
-                    class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-80"
+                    class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-80 theme-transition"
             />
         </div>
 
         <select
                 bind:value={statusFilter}
-                class="px-4 py-2 border border-border-input bg-background-alt text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-auto"
+                class="px-4 py-2 border border-border-input bg-background-alt text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-auto theme-transition"
         >
             {#each statuses as status(status)}
                 <option value={status}>
@@ -71,10 +71,10 @@
     </div>
 
 <!--  Orders Table  -->
-    <div class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden">
+    <div class="bg-background-alt rounded-xl shadow-sm border border-border-card overflow-hidden theme-transition">
         <div class="overflow-x-auto -mx-4 sm:mx-0">
-            <table class="w-full">
-                <thead class="bg-muted">
+            <table class="w-full theme-transition">
+                <thead class="bg-muted theme-transition">
                 <tr>
                     <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Order Details
@@ -96,9 +96,9 @@
                     </th>
                 </tr>
                 </thead>
-                <tbody class="bg-background-alt divide-y divide-border-card">
+                <tbody class="bg-background-alt divide-y divide-border-card theme-transition">
                 {#each filteredOrders as order(order.id)}
-                    <tr class="hover:bg-muted">
+                    <tr class="hover:bg-muted theme-transition-fast">
                         <td class="px-3 sm:px-6 py-4">
                             <div>
                                 <div class="text-sm font-medium text-foreground">{order.id}</div>
@@ -126,7 +126,7 @@
                             <select
                                     value={order.status}
                                     onchange={(e) => updateOrderStatus(order.id, e.target.value)}
-                                    class={`text-xs font-semibold rounded-full px-2 py-1 border-0 focus:outline-none focus:ring-2 focus:ring-accent w-full sm:w-auto ${getStatusColor(order.status)}`}
+                                    class={`text-xs font-semibold rounded-full px-2 py-1 border-0 focus:outline-none focus:ring-2 focus:ring-accent w-full sm:w-auto theme-transition ${getStatusColor(order.status)}`}
                             >
                                 <option value="pending">Pending</option>
                                 <option value="processing">Processing</option>
@@ -154,7 +154,7 @@
     {#if filteredOrders.length === 0}
         <div class="text-center py-12">
             <div class="mx-auto h-12 w-12 text-muted-foreground">
-                <ShoppingCartSimple class="w-full h-full" />
+                <ShoppingCartSimple class="w-full h-full theme-transition" />
             </div>
             <h3 class="mt-2 text-sm font-medium text-foreground">No orders found</h3>
             <p class="mt-1 text-sm text-foreground-alt">

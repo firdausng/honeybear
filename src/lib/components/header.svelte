@@ -18,19 +18,19 @@
     let { activeUser, header = $bindable() }: {activeUser: User, header: HeaderProps} = $props();
 </script>
 
-<header class="bg-background shadow-sm border-b border-border-card px-6 py-4">
+<header class="bg-background shadow-sm border-b border-border-card px-6 py-4 theme-transition">
     <div class="flex items-center justify-between md:pr-12">
         <div class="flex items-center space-x-4">
             <button
                     onclick={header.onMenuClick}
-                    class="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                    class="lg:hidden p-2 text-muted-foreground hover:text-foreground theme-transition-fast"
             >
                 <List class="w-5 h-5" />
             </button>
 
             <div>
-<h2 class="text-2xl font-bold text-foreground capitalize">{header.title}</h2>
-<p class="text-sm text-foreground-alt mt-1 hidden sm:block">
+<h2 class="text-2xl font-bold text-foreground capitalize theme-transition">{header.title}</h2>
+<p class="text-sm text-foreground-alt mt-1 hidden sm:block theme-transition">
                     {new Date().toLocaleDateString('en-US', {
                         weekday: 'long',
                         year: 'numeric',
@@ -47,13 +47,13 @@
                 <input
                         type="text"
                         placeholder="Search..."
-class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-64"
+class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foreground placeholder:text-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent w-64 theme-transition"
                 />
             </div>
 
             <button
                 onclick={themeStore.toggleTheme}
-class="p-2 text-muted-foreground hover:text-foreground transition-colors"
+class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast"
                 aria-label="Toggle theme"
             >
                 {#if themeStore.current === 'light'}
@@ -63,7 +63,7 @@ class="p-2 text-muted-foreground hover:text-foreground transition-colors"
                 {/if}
             </button>
 
-<button class="relative p-2 text-muted-foreground hover:text-foreground transition-colors">
+<button class="relative p-2 text-muted-foreground hover:text-foreground theme-transition-fast">
                 <Bell class="w-5 h-5" />
                 <span class="absolute top-0 right-0 w-2 h-2 bg-destructive rounded-full"></span>
             </button>
