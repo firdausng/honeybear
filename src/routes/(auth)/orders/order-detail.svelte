@@ -33,7 +33,7 @@
                 class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20"
         />
         <Dialog.Content
-                class="rounded-xl bg-primary-50 dark:bg-gray-800 shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-primary-900 dark:border-gray-600 shadow-lg p-5 md:w-full max-h-[90vh] flex flex-col"
+                class="rounded-xl bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-border-card shadow-lg p-5 md:w-full max-h-[90vh] flex flex-col"
         >
             <Dialog.Title
                     class="flex w-full items-center justify-center text-lg font-semibold tracking-tight flex-shrink-0"
@@ -83,7 +83,7 @@
                     </div>
 
                     <!-- Shipping Address  -->
-                    <div class="bg-primary-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <div class="bg-background-alt border border-border-card rounded-lg p-4">
                         <div class="flex items-center space-x-2 mb-3">
                             <!--                                <MapPin class="w-4 h-4 text-gray-500" />-->
                             <h3 class="font-medium text-gray-900 dark:text-white">Shipping Address</h3>
@@ -98,7 +98,7 @@
                     </div>
 
                     <!-- Order Items -->
-                    <div class="bg-primary-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                    <div class="bg-background-alt border border-border-card rounded-lg overflow-hidden">
                         <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                             <h3 class="font-medium text-gray-900 dark:text-white">Order Items</h3>
                         </div>
@@ -129,13 +129,13 @@
             <!-- Fixed footer with close button -->
             <div class="flex w-full justify-end pt-4 flex-shrink-0">
                 <Dialog.Close
-                        class="h-input rounded-input bg-dark text-background shadow-mini hover:bg-dark/95 focus-visible:ring-dark focus-visible:ring-offset-background focus-visible:outline-hidden inline-flex items-center justify-center px-[50px] text-[15px] font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
+                        class="h-input rounded-input bg-accent text-accent-foreground shadow-mini hover:bg-accent focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden inline-flex items-center justify-center px-[50px] text-[15px] font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
                 >
                     Close
                 </Dialog.Close>
             </div>
             <Dialog.Close
-                    class="focus-visible:ring-foreground focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
+                    class="focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
             >
                 <div>
                     <X class="text-foreground size-5" />

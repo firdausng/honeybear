@@ -28,11 +28,11 @@
             case 'processing':
                 return 'bg-yellow-100 text-yellow-800 border-yellow-200';
             case 'pending':
-                return 'bg-primary-100 text-primary-800 border-primary-200';
+                return 'bg-muted text-foreground-alt border-border-input';
             case 'cancelled':
                 return 'bg-red-100 text-red-800 border-red-200';
             default:
-                return 'bg-primary-100 text-primary-800 border-primary-200';
+                return 'bg-muted text-foreground-alt border-border-input';
         }
     };
 
@@ -89,7 +89,7 @@
                 class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20"
         />
         <Dialog.Content
-                class="rounded-xl bg-primary-50 shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-primary-900 shadow-lg p-0 md:w-full max-h-[90vh] flex flex-col"
+                class="rounded-xl bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-border-card shadow-lg p-0 md:w-full max-h-[90vh] flex flex-col"
         >
             <!-- Fixed Header -->
             <div class="flex-shrink-0 p-5">
@@ -99,11 +99,11 @@
                 >
                     <div></div>
                     <div>
-                        <h2 class="text-xl font-semibold text-primary-900">Edit Products</h2>
+                        <h2 class="text-xl font-semibold text-foreground">Edit Products</h2>
                     </div>
                     <Button.Root
                             type="button"
-                            class="flex items-center justify-center w-8 h-8 rounded-lg text-primary-400 hover:text-primary-600 hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200"
+                            class="flex items-center justify-center w-8 h-8 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200"
                             onclick={() => setOpen(false)}
                     >
                         <X class="w-5 h-5"/>
@@ -153,24 +153,24 @@
                         <div class="space-y-8">
                             <!-- Basic Information Section -->
                             <div class="space-y-6">
-                                <div class="border-b border-primary-200 pb-4">
-                                    <h3 class="text-lg font-semibold text-primary-900 flex items-center space-x-2">
-                                        <Package class="w-5 h-5 text-primary-600"/>
+                                <div class="border-b border-border-card pb-4">
+                                    <h3 class="text-lg font-semibold text-foreground flex items-center space-x-2">
+                                        <Package class="w-5 h-5 text-accent"/>
                                         <span>Basic Information</span>
                                     </h3>
-                                    <p class="text-sm text-primary-600 mt-1">Enter the core details about your product</p>
+                                    <p class="text-sm text-foreground-alt mt-1">Enter the core details about your product</p>
                                 </div>
                                 
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                     <div class="space-y-2">
-                                        <Label.Root for="name" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="name" class="text-sm font-semibold text-foreground">
                                             Product Name *
                                         </Label.Root>
                                         <input
                                                 id="name"
                                                 name="name"
                                                 type="text"
-                                                class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400"
+                                                class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                 placeholder="Enter product name"
                                                 aria-invalid={$errors.name ? 'true' : undefined}
                                                 aria-describedby={$errors.name ? 'name-error' : undefined}
@@ -188,7 +188,7 @@
                                     </div>
 
                                     <div class="space-y-2">
-                                        <Label.Root for="category" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="category" class="text-sm font-semibold text-foreground">
                                             Category *
                                         </Label.Root>
                                         <div class="relative">
@@ -196,7 +196,7 @@
                                                     id="category"
                                                     name="category"
                                                     bind:value={$form.category}
-                                                    class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400 appearance-none cursor-pointer pr-10"
+                                                    class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                                     aria-invalid={$errors.category ? 'true' : undefined}
                                                     aria-describedby={$errors.category ? 'category-error' : undefined}
                                                     {...$constraints.category}
@@ -208,7 +208,7 @@
                                             </select>
                                             <!-- Custom dropdown arrow -->
                                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-primary-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </div>
@@ -227,27 +227,27 @@
 
                             <!-- Pricing & Inventory Section -->
                             <div class="space-y-6">
-                                <div class="border-b border-primary-200 pb-4">
-                                    <h3 class="text-lg font-semibold text-primary-900 flex items-center space-x-2">
-                                        <span class="text-primary-600">💰</span>
+                                <div class="border-b border-border-card pb-4">
+                                    <h3 class="text-lg font-semibold text-foreground flex items-center space-x-2">
+                                        <span class="text-accent">💰</span>
                                         <span>Pricing & Inventory</span>
                                     </h3>
-                                    <p class="text-sm text-primary-600 mt-1">Set pricing and track inventory levels</p>
+                                    <p class="text-sm text-foreground-alt mt-1">Set pricing and track inventory levels</p>
                                 </div>
                                 
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                                     <div class="space-y-2">
-                                        <Label.Root for="price" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="price" class="text-sm font-semibold text-foreground">
                                             Price *
                                         </Label.Root>
                                         <div class="relative">
-                                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-500 font-medium">$</span>
+                                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground font-medium">$</span>
                                             <input
                                                     id="price"
                                                     name="price"
                                                     min="0"
                                                     step="0.01"
-                                                    class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400"
+                                                    class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                     placeholder="0.00"
                                                     aria-invalid={$errors.price ? 'true' : undefined}
                                                     aria-describedby={$errors.price ? 'price-error' : undefined}
@@ -266,7 +266,7 @@
                                     </div>
 
                                     <div class="space-y-2">
-                                        <Label.Root for="stock" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="stock" class="text-sm font-semibold text-foreground">
                                             Stock Quantity *
                                         </Label.Root>
                                         <input
@@ -275,7 +275,7 @@
                                                 type="number"
                                                 required
                                                 min="0"
-                                                class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400"
+                                                class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                 placeholder="0"
                                                 aria-invalid={$errors.stock ? 'true' : undefined}
                                                 aria-describedby={$errors.stock ? 'stock-error' : undefined}
@@ -293,13 +293,13 @@
                                     </div>
 
                                     <div class="space-y-2">
-                                        <Label.Root for="sku" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="sku" class="text-sm font-semibold text-foreground">
                                             SKU *
                                         </Label.Root>
                                         <input
                                                 id="sku"
                                                 name="sku"
-                                                class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400"
+                                                class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                 placeholder="Enter SKU"
                                                 aria-invalid={$errors.sku ? 'true' : undefined}
                                                 aria-describedby={$errors.sku ? 'sku-error' : undefined}
@@ -320,17 +320,17 @@
 
                             <!-- Product Details Section -->
                             <div class="space-y-6">
-                                <div class="border-b border-primary-200 pb-4">
-                                    <h3 class="text-lg font-semibold text-primary-900 flex items-center space-x-2">
-                                        <span class="text-primary-600">📝</span>
+                                <div class="border-b border-border-card pb-4">
+                                    <h3 class="text-lg font-semibold text-foreground flex items-center space-x-2">
+                                        <span class="text-accent">📝</span>
                                         <span>Product Details</span>
                                     </h3>
-                                    <p class="text-sm text-primary-600 mt-1">Add description, images, and settings</p>
+                                    <p class="text-sm text-foreground-alt mt-1">Add description, images, and settings</p>
                                 </div>
                                 
                                 <div class="space-y-6">
                                     <div class="space-y-2">
-                                        <Label.Root for="description" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="description" class="text-sm font-semibold text-foreground">
                                             Description *
                                         </Label.Root>
                                         <textarea
@@ -338,7 +338,7 @@
                                                 name="description"
                                                 required
                                                 rows="4"
-                                                class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400 resize-y min-h-[120px]"
+                                                class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card resize-y min-h-[120px] text-foreground placeholder-muted-foreground"
                                                 placeholder="Enter a detailed product description..."
                                                 aria-invalid={$errors.description ? 'true' : undefined}
                                                 aria-describedby={$errors.description ? 'description-error' : undefined}
@@ -356,14 +356,14 @@
                                     </div>
 
                                     <div class="space-y-2">
-                                        <Label.Root for="image" class="text-sm font-semibold text-primary-800">
+                                        <Label.Root for="image" class="text-sm font-semibold text-foreground">
                                             Image URL *
                                         </Label.Root>
                                         <input
                                                 id="image"
                                                 name="image"
                                                 type="url"
-                                                class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400"
+                                                class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                 placeholder="https://example.com/image.jpg"
                                                 aria-invalid={$errors.image ? 'true' : undefined}
                                                 aria-describedby={$errors.image ? 'image-error' : undefined}
@@ -382,7 +382,7 @@
 
                                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                         <div class="space-y-2">
-                                            <Label.Root for="status" class="text-sm font-semibold text-primary-800">
+                                            <Label.Root for="status" class="text-sm font-semibold text-foreground">
                                                 Status *
                                             </Label.Root>
                                             <div class="relative">
@@ -390,7 +390,7 @@
                                                         id="status"
                                                         name="status"
                                                         bind:value={$form.status}
-                                                        class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-primary-300 bg-primary-50 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-primary-400 appearance-none cursor-pointer pr-10"
+                                                        class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                                         aria-invalid={$errors.status ? 'true' : undefined}
                                                         aria-describedby={$errors.status ? 'status-error' : undefined}
                                                         {...$constraints.status}
@@ -402,7 +402,7 @@
                                                 </select>
                                                 <!-- Custom dropdown arrow -->
                                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                    <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-primary-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                     </svg>
                                                 </div>
@@ -418,13 +418,13 @@
                                         </div>
 
                                         <div class="space-y-2">
-                                            <Label.Root class="text-sm font-semibold text-primary-800">
+                                            <Label.Root class="text-sm font-semibold text-foreground">
                                                 Product Settings
                                             </Label.Root>
-                                            <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-primary-50 border-primary-200'} rounded-xl border transition-colors duration-200">
+                                            <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-background-alt border-border-input'} rounded-xl border transition-colors duration-200">
                                                 <Checkbox.Root
                                                         id="featured"
-                                                        class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-primary-300 bg-primary-50 data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500'} hover:border-primary-400 transition-all duration-200"
+                                                        class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-border-input bg-background-alt data-[state=checked]:border-accent data-[state=checked]:bg-accent'} hover:border-border-card transition-all duration-200"
                                                         name="featured"
                                                         aria-invalid={$errors.featured ? 'true' : undefined}
                                                         aria-describedby={$errors.featured ? 'featured-error' : undefined}
@@ -439,7 +439,7 @@
                                                 </Checkbox.Root>
                                                 <Label.Root
                                                         for="featured"
-                                                        class="text-sm font-medium {$errors.featured ? 'text-red-800' : 'text-primary-800'} cursor-pointer"
+                                                        class="text-sm font-medium {$errors.featured ? 'text-red-800' : 'text-foreground'} cursor-pointer"
                                                 >
                                                     Featured Product
                                                 </Label.Root>
@@ -460,10 +460,10 @@
                     </div>
 
                     <!-- Fixed footer with buttons -->
-                    <div class="flex-shrink-0 flex w-full justify-end p-6 pt-4 border-t border-primary-200 gap-3">
+                    <div class="flex-shrink-0 flex w-full justify-end p-6 pt-4 border-t border-border-card gap-3">
                         <Button.Root
                                 type="button"
-                                class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-primary-300 rounded-xl text-sm font-semibold text-primary-700 bg-primary-50 hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                                class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-border-input rounded-xl text-sm font-semibold text-foreground-alt bg-background-alt hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
                                 onclick={() => setOpen(false)}
                         >
                             <X class="w-4 h-4"/>
@@ -472,7 +472,7 @@
                         
                         <Button.Root
                                 type="submit"
-                                class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                                class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-accent-foreground bg-accent hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
                         >
                             <FloppyDisk class="w-4 h-4"/>
                             <span>{product ? 'Update Product' : 'Create Product'}</span>

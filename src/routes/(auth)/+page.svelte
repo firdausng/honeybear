@@ -53,44 +53,44 @@
     </div>
 
     <!--  Recent Orders  -->
-    <div class="bg-primary-50 dark:bg-primary-900 rounded-xl shadow-sm border border-primary-100 dark:border-primary-800">
-        <div class="px-6 py-4 border-b border-primary-200 dark:border-primary-800">
-            <h3 class="text-lg font-semibold text-primary-900 dark:text-primary-50">Recent Orders</h3>
+    <div class="bg-background-alt rounded-xl shadow-sm border border-border-card">
+        <div class="px-6 py-4 border-b border-border-card">
+            <h3 class="text-lg font-semibold text-foreground">Recent Orders</h3>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full">
-                <thead class="bg-primary-100 dark:bg-primary-800">
+                <thead class="bg-muted">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-primary-500 dark:text-primary-200 uppercase tracking-wider">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Order ID
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-primary-500 dark:text-primary-200 uppercase tracking-wider">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Customer
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-primary-500 dark:text-primary-200 uppercase tracking-wider">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Total
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-primary-500 dark:text-primary-200 uppercase tracking-wider">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Status
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-primary-500 dark:text-primary-200 uppercase tracking-wider">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-foreground-alt uppercase tracking-wider">
                         Date
                     </th>
                 </tr>
                 </thead>
-                <tbody class="bg-primary-50 dark:bg-primary-900 divide-y divide-primary-200 dark:divide-primary-800">
+                <tbody class="bg-background-alt divide-y divide-border-card">
                 {#each data.orders as order (order.id)}
-                    <tr class="hover:bg-primary-50 dark:hover:bg-primary-800">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary-900 dark:text-primary-50">
+                    <tr class="hover:bg-muted">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground">
                             {order.id}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div>
-                                <div class="text-sm font-medium text-primary-900 dark:text-primary-50">{order.customerName}</div>
-                                <div class="text-sm text-primary-500 dark:text-primary-200">{order.customerEmail}</div>
+                                <div class="text-sm font-medium text-foreground">{order.customerName}</div>
+                                <div class="text-sm text-foreground-alt">{order.customerEmail}</div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-primary-900 dark:text-primary-50">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-foreground">
                             ${order.total.toFixed(2)}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -98,13 +98,13 @@
                         order.status === 'delivered' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400' :
                             order.status === 'shipped' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400' :
                                 order.status === 'processing' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400' :
-                                    order.status === 'pending' ? 'bg-primary-100 dark:bg-secondary-800 text-primary-800 dark:text-secondary-200' :
+                                    order.status === 'pending' ? 'bg-muted text-foreground' :
                                         'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400'
                     }`}>
                       {order.status}
                     </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-primary-500 dark:text-primary-200">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-foreground-alt">
                             {new Date(order.createdAt).toLocaleDateString()}
                         </td>
                     </tr>
@@ -124,11 +124,11 @@
 })}
     {@const isPositive = change && change > 0}
 
-    <div class="bg-primary-50 dark:bg-primary-900 rounded-xl shadow-sm p-6 border border-primary-100 dark:border-primary-800">
+    <div class="bg-background-alt rounded-xl shadow-sm p-6 border border-border-card">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-sm font-medium text-primary-600 dark:text-primary-200">{title}</p>
-                <p class="text-2xl font-bold text-primary-900 dark:text-primary-50 mt-2">{value}</p>
+                <p class="text-sm font-medium text-foreground-alt">{title}</p>
+                <p class="text-2xl font-bold text-foreground mt-2">{value}</p>
                 {#if change !== undefined}
                     <div class="flex items-center mt-2 {isPositive ? 'text-green-600' : 'text-red-600'}">
                         {#if isPositive}

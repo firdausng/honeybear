@@ -52,11 +52,11 @@
 <svelte:head>
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50 dark:bg-primary-950 lg:flex">
+<div class="min-h-screen bg-background lg:flex">
     <!--    <Navbar logoutLink="/logout" activeUser={data.activeUser}/>-->
     {#if data.activeUser}
         <Sidebar activeUser={data.activeUser} bind:activeSection={currentSection} menuItems={menuItems} bind:sidebarOpen={sidebarOpen}/>
-        <div class="flex-grow bg-primary-50 dark:bg-primary-950">
+        <div class="flex-grow bg-background">
             <Header activeUser={data.activeUser} header={header}/>
             {#key data.url}
                 <main

@@ -94,7 +94,7 @@
 
 {#if isModal}
     <button
-            class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+            class="flex-1 bg-background-alt hover:bg-accent text-accent-foreground px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-1"
             onclick={() => {setOpen(true)}}>
         <PencilLine class="w-4 h-4"/>
         <span>Edit</span>
@@ -106,7 +106,7 @@
                     class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20"
             />
             <Dialog.Content
-                    class="rounded-xl bg-primary-50 dark:bg-primary-900 shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-primary-900 dark:border-gray-600 shadow-lg p-0 md:w-full max-h-[90vh] flex flex-col"
+                    class="rounded-xl bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border border-border-card shadow-lg p-0 md:w-full max-h-[90vh] flex flex-col"
             >
                 <!-- Fixed Header -->
                 <div class="flex-shrink-0 p-5">
@@ -120,7 +120,7 @@
                         </div>
                         <Button.Root
                                 type="button"
-                                class="flex items-center justify-center w-8 h-8 rounded-lg text-gray-400 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200"
+                                class="flex items-center justify-center w-8 h-8 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200"
                                 onclick={() => setOpen(false)}
                         >
                             <X class="w-5 h-5"/>
@@ -172,7 +172,7 @@
                                 <div class="space-y-6">
                                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                                            <Package class="w-5 h-5 text-primary-600"/>
+                                            <Package class="w-5 h-5 text-accent"/>
                                             <span>Basic Information</span>
                                         </h3>
                                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Enter the core details about your product</p>
@@ -187,7 +187,7 @@
                                                     id="name"
                                                     name="name"
                                                     type="text"
-                                                    class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                                    class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                     placeholder="Enter product name"
                                                     aria-invalid={$errors.name ? 'true' : undefined}
                                                     aria-describedby={$errors.name ? 'name-error' : undefined}
@@ -213,7 +213,7 @@
                                                         id="category"
                                                         name="category"
                                                         bind:value={$form.category}
-                                                        class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 appearance-none cursor-pointer pr-10 text-gray-900 dark:text-white"
+                                                        class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                                         aria-invalid={$errors.category ? 'true' : undefined}
                                                         aria-describedby={$errors.category ? 'category-error' : undefined}
                                                         {...$constraints.category}
@@ -225,7 +225,7 @@
                                                 </select>
                                                 <!-- Custom dropdown arrow -->
                                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                    <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-gray-400 dark:text-gray-300'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                     </svg>
                                                 </div>
@@ -246,7 +246,7 @@
                                 <div class="space-y-6">
                                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                                            <span class="text-primary-600">💰</span>
+                                            <span class="text-accent">💰</span>
                                             <span>Pricing & Inventory</span>
                                         </h3>
                                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Set pricing and track inventory levels</p>
@@ -264,7 +264,7 @@
                                                         name="price"
                                                         min="0"
                                                         step="0.01"
-                                                        class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                                        class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                         placeholder="0.00"
                                                         aria-invalid={$errors.price ? 'true' : undefined}
                                                         aria-describedby={$errors.price ? 'price-error' : undefined}
@@ -292,7 +292,7 @@
                                                     type="number"
                                                     required
                                                     min="0"
-                                                    class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                                    class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                     placeholder="0"
                                                     aria-invalid={$errors.stock ? 'true' : undefined}
                                                     aria-describedby={$errors.stock ? 'stock-error' : undefined}
@@ -316,7 +316,7 @@
                                             <input
                                                     id="sku"
                                                     name="sku"
-                                                    class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                                    class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                     placeholder="Enter SKU"
                                                     aria-invalid={$errors.sku ? 'true' : undefined}
                                                     aria-describedby={$errors.sku ? 'sku-error' : undefined}
@@ -339,7 +339,7 @@
                                 <div class="space-y-6">
                                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                                            <span class="text-primary-600">📝</span>
+                                            <span class="text-accent">📝</span>
                                             <span>Product Details</span>
                                         </h3>
                                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Add description, images, and settings</p>
@@ -355,7 +355,7 @@
                                                     name="description"
                                                     required
                                                     rows="4"
-                                                    class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 resize-y min-h-[120px]"
+                                                    class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card resize-y min-h-[120px] text-foreground placeholder-muted-foreground"
                                                     placeholder="Enter a detailed product description..."
                                                     aria-invalid={$errors.description ? 'true' : undefined}
                                                     aria-describedby={$errors.description ? 'description-error' : undefined}
@@ -380,7 +380,7 @@
                                                     id="image"
                                                     name="image"
                                                     type="url"
-                                                    class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                                    class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                                     placeholder="https://example.com/image.jpg"
                                                     aria-invalid={$errors.image ? 'true' : undefined}
                                                     aria-describedby={$errors.image ? 'image-error' : undefined}
@@ -407,7 +407,7 @@
                                                             id="status"
                                                             name="status"
                                                             bind:value={$form.status}
-                                                            class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 appearance-none cursor-pointer pr-10"
+                                                            class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                                             aria-invalid={$errors.status ? 'true' : undefined}
                                                             aria-describedby={$errors.status ? 'status-error' : undefined}
                                                             {...$constraints.status}
@@ -419,7 +419,7 @@
                                                     </select>
                                                     <!-- Custom dropdown arrow -->
                                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                        <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-gray-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                         </svg>
                                                     </div>
@@ -438,10 +438,10 @@
                                                 <Label.Root class="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                                     Product Settings
                                                 </Label.Root>
-                                                <div class="flex items-center space-x-3 p-4 bg-primary-50 dark:bg-primary-900 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'} rounded-xl border transition-colors duration-200">
+                                                <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-background-alt border-border-input'} rounded-xl border transition-colors duration-200">
                                                     <Checkbox.Root
                                                             id="featured"
-                                                            class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-gray-300 bg-primary-50 data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500'} hover:border-gray-400 transition-all duration-200"
+                                                            class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-border-input bg-background-alt data-[state=checked]:border-accent data-[state=checked]:bg-accent'} hover:border-border-card transition-all duration-200"
                                                             name="featured"
                                                             aria-invalid={$errors.featured ? 'true' : undefined}
                                                             aria-describedby={$errors.featured ? 'featured-error' : undefined}
@@ -454,7 +454,7 @@
                                                     </Checkbox.Root>
                                                     <Label.Root
                                                             for="featured"
-                                                            class="text-sm font-medium dark:text-primary-50 {$errors.featured ? 'text-red-800' : 'text-gray-800'} cursor-pointer"
+                                                            class="text-sm font-medium {$errors.featured ? 'text-red-800' : 'text-foreground'} cursor-pointer"
                                                     >
                                                         Featured Product
                                                     </Label.Root>
@@ -478,7 +478,7 @@
                         <div class="flex-shrink-0 flex w-full justify-end p-6 pt-4 border-t border-gray-200 gap-3">
                             <Button.Root
                                     type="button"
-                                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 bg-primary-50 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-border-input rounded-xl text-sm font-semibold text-foreground-alt bg-background-alt hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
                                     onclick={() => setOpen(false)}
                             >
                                 <X class="w-4 h-4"/>
@@ -487,7 +487,7 @@
 
                             <Button.Root
                                     type="submit"
-                                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-accent-foreground bg-accent hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
                             >
                                 <FloppyDisk class="w-4 h-4"/>
                                 <span>{product ? 'Update Product' : 'Create Product'}</span>
@@ -510,7 +510,7 @@
                 <div class="space-y-6">
                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                            <Package class="w-5 h-5 text-primary-600"/>
+                            <Package class="w-5 h-5 text-accent"/>
                             <span>Basic Information</span>
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Enter the core details about your product</p>
@@ -525,7 +525,7 @@
                                     id="name"
                                     name="name"
                                     type="text"
-                                    class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                    class="w-full px-4 py-3 border {$errors.name ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                     placeholder="Enter product name"
                                     aria-invalid={$errors.name ? 'true' : undefined}
                                     aria-describedby={$errors.name ? 'name-error' : undefined}
@@ -551,7 +551,7 @@
                                         id="category"
                                         name="category"
                                         bind:value={$form.category}
-                                        class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 appearance-none cursor-pointer pr-10"
+                                        class="w-full px-4 py-3 border {$errors.category ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                         aria-invalid={$errors.category ? 'true' : undefined}
                                         aria-describedby={$errors.category ? 'category-error' : undefined}
                                         {...$constraints.category}
@@ -563,7 +563,7 @@
                                 </select>
                                 <!-- Custom dropdown arrow -->
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-gray-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 {$errors.category ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
@@ -584,7 +584,7 @@
                 <div class="space-y-6">
                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                            <span class="text-primary-600">💰</span>
+                            <span class="text-accent">💰</span>
                             <span>Pricing & Inventory</span>
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Set pricing and track inventory levels</p>
@@ -602,7 +602,7 @@
                                         name="price"
                                         min="0"
                                         step="0.01"
-                                        class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                        class="w-full pl-8 pr-4 py-3 border {$errors.price ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                         placeholder="0.00"
                                         aria-invalid={$errors.price ? 'true' : undefined}
                                         aria-describedby={$errors.price ? 'price-error' : undefined}
@@ -630,7 +630,7 @@
                                     type="number"
                                     required
                                     min="0"
-                                    class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                    class="w-full px-4 py-3 border {$errors.stock ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                     placeholder="0"
                                     aria-invalid={$errors.stock ? 'true' : undefined}
                                     aria-describedby={$errors.stock ? 'stock-error' : undefined}
@@ -654,7 +654,7 @@
                             <input
                                     id="sku"
                                     name="sku"
-                                    class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                    class="w-full px-4 py-3 border {$errors.sku ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                     placeholder="Enter SKU"
                                     aria-invalid={$errors.sku ? 'true' : undefined}
                                     aria-describedby={$errors.sku ? 'sku-error' : undefined}
@@ -677,7 +677,7 @@
                 <div class="space-y-6">
                     <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                            <span class="text-primary-600">📝</span>
+                            <span class="text-accent">📝</span>
                             <span>Product Details</span>
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Add description, images, and settings</p>
@@ -693,7 +693,7 @@
                                     name="description"
                                     required
                                     rows="4"
-                                    class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 resize-y min-h-[120px]"
+                                    class="w-full px-4 py-3 border {$errors.description ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card resize-y min-h-[120px] text-foreground placeholder-muted-foreground"
                                     placeholder="Enter a detailed product description..."
                                     aria-invalid={$errors.description ? 'true' : undefined}
                                     aria-describedby={$errors.description ? 'description-error' : undefined}
@@ -718,7 +718,7 @@
                                     id="image"
                                     name="image"
                                     type="url"
-                                    class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white dark:placeholder-gray-400"
+                                    class="w-full px-4 py-3 border {$errors.image ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card text-foreground placeholder-muted-foreground"
                                     placeholder="https://example.com/image.jpg"
                                     aria-invalid={$errors.image ? 'true' : undefined}
                                     aria-describedby={$errors.image ? 'image-error' : undefined}
@@ -745,7 +745,7 @@
                                             id="status"
                                             name="status"
                                             bind:value={$form.status}
-                                            class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/30 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 dark:border-gray-600 bg-primary-50 dark:bg-primary-700 focus:ring-primary-500 focus:border-primary-500'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-gray-400 appearance-none cursor-pointer pr-10"
+                                            class="w-full px-4 py-3 border {$errors.status ? 'border-red-300 bg-red-50 focus:ring-red-500 focus:border-red-500' : 'border-border-input bg-background-alt focus:ring-accent focus:border-accent'} rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 shadow-sm hover:border-border-card appearance-none cursor-pointer pr-10 text-foreground"
                                             aria-invalid={$errors.status ? 'true' : undefined}
                                             aria-describedby={$errors.status ? 'status-error' : undefined}
                                             {...$constraints.status}
@@ -757,7 +757,7 @@
                                     </select>
                                     <!-- Custom dropdown arrow -->
                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-gray-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-5 h-5 {$errors.status ? 'text-red-400' : 'text-muted-foreground'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                         </svg>
                                     </div>
@@ -776,10 +776,10 @@
                                 <Label.Root class="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     Product Settings
                                 </Label.Root>
-                                <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'} rounded-xl border transition-colors duration-200">
+                                <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-background-alt border-border-input'} rounded-xl border transition-colors duration-200">
                                     <Checkbox.Root
                                             id="featured"
-                                            class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-gray-300 bg-primary-50 data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500'} hover:border-gray-400 transition-all duration-200"
+                                            class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-border-input bg-background-alt data-[state=checked]:border-accent data-[state=checked]:bg-accent'} hover:border-border-card transition-all duration-200"
                                             name="featured"
                                             aria-invalid={$errors.featured ? 'true' : undefined}
                                             aria-describedby={$errors.featured ? 'featured-error' : undefined}
@@ -792,7 +792,7 @@
                                     </Checkbox.Root>
                                     <Label.Root
                                             for="featured"
-                                            class="text-sm font-medium {$errors.featured ? 'text-red-800' : 'text-gray-800'} cursor-pointer"
+                                            class="text-sm font-medium {$errors.featured ? 'text-red-800' : 'text-foreground'} cursor-pointer"
                                     >
                                         Featured Product
                                     </Label.Root>
@@ -817,7 +817,7 @@
             {#if onClose}
                 <Button.Root
                         type="button"
-                        class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 bg-primary-50 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                        class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-border-input rounded-xl text-sm font-semibold text-foreground-alt bg-background-alt hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
                         onclick={onClose}
                 >
                     <X class="w-4 h-4"/>
@@ -827,7 +827,7 @@
 
             <Button.Root
                     type="submit"
-                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm"
+                    class="inline-flex items-center justify-center space-x-2 px-6 py-3 border border-transparent rounded-xl text-sm font-semibold text-accent-foreground bg-accent hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 shadow-sm"
             >
                 <FloppyDisk class="w-4 h-4"/>
                 <span>{product ? 'Update Product' : 'Create Product'}</span>

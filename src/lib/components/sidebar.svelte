@@ -18,29 +18,29 @@
 
 </script>
 
-<div class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-primary-50 dark:bg-primary-950 shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none">
+<div class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-background shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none">
     <div class="lg:hidden absolute top-4 right-4">
         <button
                 onclick={()=> {sidebarOpen = false}}
-class="p-2 text-primary-400 hover:text-primary-600 dark:text-primary-200 dark:hover:text-primary-100 transition-colors">
+class="p-2 text-muted-foreground hover:text-foreground transition-colors">
             close
         </button>
     </div>
 
-<div class="p-6 border-b border-primary-200 dark:border-primary-800">
+<div class="p-6 border-b border-border-card">
         <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 bg-primary-900 dark:bg-primary-600 rounded-lg flex items-center justify-center">
-                <Package class="w-5 h-5 text-primary-100 dark:text-primary-100" />
+            <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                <Package class="w-5 h-5 text-accent-foreground" />
             </div>
-<h1 class="text-xl font-bold text-primary-900 dark:text-primary-50">ShopAdmin</h1>
+<h1 class="text-xl font-bold text-foreground">ShopAdmin</h1>
         </div>
     </div>
-    
+
     <nav class="mt-6">
         {#each menuItems as item}
             <a
                 href={item.path}
-class="w-full flex items-center space-x-3 px-6 py-3 text-left transition-colors {item.id === activeSection.id ? 'bg-primary-100 dark:bg-primary-800 text-primary-900 dark:text-primary-50' : 'text-primary-600 dark:text-primary-200 hover:bg-primary-50 dark:hover:bg-primary-900'}"
+class="w-full flex items-center space-x-3 px-6 py-3 text-left transition-colors {item.id === activeSection.id ? 'bg-muted text-foreground' : 'text-muted-foreground hover:bg-background-alt hover:text-foreground'}"
             >
                 <item.icon class="w-5 h-5" />
                 <span class="font-medium">{item.label}</span>
