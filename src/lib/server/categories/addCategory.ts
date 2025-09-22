@@ -1,13 +1,7 @@
 ﻿import {drizzle} from 'drizzle-orm/d1';
 import * as schema from "$lib/server/db/schema";
 import {categories} from "$lib/server/db/schema";
-
-export type AddCategoryCommand = {
-    name: string
-    description: string
-    status: string
-    createdBy: string
-}
+import type {AddCategoryCommand} from "$lib/server/categories/schema";
 
 export class AddCategoryCommandHandler{
     constructor(private db:  D1Database) {

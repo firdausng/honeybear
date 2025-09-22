@@ -1,13 +1,7 @@
 ﻿import {drizzle} from 'drizzle-orm/d1';
 import * as schema from "$lib/server/db/schema";
 import {users} from "$lib/server/db/schema";
-
-export type RegisterUserCommand = {
-    name: string
-    email: string
-    password: string
-    active: boolean
-}
+import type {RegisterUserCommand} from "$lib/server/users/schema";
 
 export class RegisterUserHandler{
     constructor(private db:  D1Database) {
@@ -20,7 +14,7 @@ export class RegisterUserHandler{
             email: command.email,
             password: command.password,
             role: "user",
-            active: command.active,
+            active: true,
             createdAt: date,
             createdBy: "system",
         })

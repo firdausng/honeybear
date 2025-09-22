@@ -1,18 +1,9 @@
 ﻿import {drizzle} from 'drizzle-orm/d1';
 import * as schema from "$lib/server/db/schema";
 import {products} from "$lib/server/db/schema";
+import type {AddProductCommand} from "$lib/server/products/schema";
 
-export type AddProductCommand = {
-    name: string
-    description: string
-    sku: string
-    price: string
-    stock: number
-    imagePath: string
-    status: string
-    isFeatured: boolean,
-    createdBy: string
-}
+
 
 export class AddProductHandler{
     constructor(private db:  D1Database) {

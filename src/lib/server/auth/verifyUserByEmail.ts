@@ -2,15 +2,12 @@
 import * as schema from "$lib/server/db/schema";
 import {users} from "$lib/server/db/schema";
 import {eq, and} from "drizzle-orm";
-
-export type VerifyUserByEmailCommand = {
-    email: string
-}
+import type {ValidateUserEmailCommand} from "$lib/server/auth/schema";
 
 export class VerifyUserByEmailCommandHandler{
     constructor(private db:  D1Database) {
     }
-    async handle(command: VerifyUserByEmailCommand){
+    async handle(command: ValidateUserEmailCommand){
         console.log(`[VerifyUserByEmailCommandHandler] ${JSON.stringify(command, null, 2)}`);
         const client = drizzle(this.db, { schema });
         const user =  
