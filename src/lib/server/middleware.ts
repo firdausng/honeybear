@@ -28,6 +28,8 @@ const publicRoutes = [
     '/callback',
     '/unauthorized',
     '/.well-known',
+    '/openapi.json',
+    '/scalar',
     '/api'
 ]
 
@@ -71,7 +73,7 @@ export const checkSessionHandler: Handle = async ({ event, resolve }) => {
         user = session.user;
     }
 
-    console.log("[checkSessionHandler] setting active user to the local data");
+    console.log(`[checkSessionHandler] setting active user to the local data for ${event.url.pathname}`);
     event.locals.activeUser = user;
 
     return resolve(event);

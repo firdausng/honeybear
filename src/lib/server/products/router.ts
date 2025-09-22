@@ -1,14 +1,12 @@
 ﻿import { Hono } from 'hono'
 import {vValidator} from "@hono/valibot-validator";
-import {object, string, number, decimal, pipe, boolean} from "valibot";
-import {basicAuth} from "hono/basic-auth";
-import {GetUserByEmailAndPasswordHandler} from "$lib/server/users/getUserByEmailAndPassword";
+import {object, string, number, decimal, pipe, boolean, optional, array} from "valibot";
 import {type AddProductCommand, AddProductHandler} from "$lib/server/products/addProduct";
 import {drizzle} from "drizzle-orm/d1";
 import * as schema from "$lib/server/db/schema";
-import {categories, products} from "$lib/server/db/schema";
+import {products} from "$lib/server/db/schema";
 import {and, eq} from "drizzle-orm";
-import categoryRouter from "$lib/server/categories/router";
+import { describeRoute, resolver, validator } from 'hono-openapi'
 
 export const AddProductCommandSchema = object({
     name: pipe(string(),),
@@ -25,7 +23,39 @@ export const AddProductCommandSchema = object({
 
 const productRouter = new Hono<App.Api>();
 
-productRouter.get('/', async (c) => {
+const querySchema = object({
+    name: optional(string()),
+})
+
+const ProductResponseSchema = object({
+    id: number(),
+    name: string(),
+    price: string(),
+    description: string(),
+    sku: string(),
+    stock: number(),
+    imagePath: string(),
+    status: string(),
+    isFeatured: boolean(),
+    createdBy: string(),
+});
+
+const ProductArraySchema = array(ProductResponseSchema);
+
+productRouter.get(
+    '/',
+    describeRoute({
+        description: 'Get products list',
+        responses: {
+            200: {
+                description: 'Successful response',
+                content: {
+                    'application/json': { schema: resolver(ProductResponseSchema) },
+                },
+            },
+        },
+    }),
+    async (c) => {
     const client = drizzle(c.env.DB, { schema });
 
     const list =
@@ -49,7 +79,20 @@ productRouter.get('/', async (c) => {
         }))
     });
 })
-productRouter.get('/:id', async (c) =>{
+productRouter.get(
+    '/:id',
+    describeRoute({
+        description: 'Get products details by id',
+        responses: {
+            200: {
+                description: 'Successful response',
+                content: {
+                    'application/json': { schema: resolver(ProductArraySchema) },
+                },
+            },
+        },
+    }),
+    async (c) =>{
     const id = c.req.param('id');
     const client = drizzle(c.env.DB, { schema });
     const data =
@@ -72,7 +115,20 @@ productRouter.get('/:id', async (c) =>{
     return c.json(data[0]);
 })
 
-productRouter.post('/', vValidator('json', AddProductCommandSchema), async (c) => {
+productRouter.post('/',
+    describeRoute({
+        description: 'Get products list',
+        responses: {
+            200: {
+                description: 'Successful response',
+                content: {
+                    'application/json': { schema: resolver(ProductResponseSchema) },
+                },
+            },
+        },
+    }),
+    vValidator('json', AddProductCommandSchema), 
+    async (c) => {
     const body = c.req.valid('json');
     const addProductCommand: AddProductCommand = {
         name: body.name,
