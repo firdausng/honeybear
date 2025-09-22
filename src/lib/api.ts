@@ -8,6 +8,7 @@ import {AuthService} from "$lib/server/auth-service.svelte";
 import authRouter from "$lib/server/auth/router";
 import { openAPIRouteHandler } from 'hono-openapi'
 import { Scalar } from "@scalar/hono-api-reference";
+import categoryRouter from "$lib/server/categories/router";
 
 const router = new Hono<App.Api>()
     .use(async (c, next) => {
@@ -23,7 +24,7 @@ const router = new Hono<App.Api>()
     .route('/products', productRouter)
     .route('/users', userRouter)
     .route('/auth', authRouter)
-    
+    .route('/auth', categoryRouter)
     .onError((err, c) => {
         console.log('err', err);
         return c.json({
@@ -42,9 +43,9 @@ api.get(
     openAPIRouteHandler(router, {
         documentation: {
             info: {
-                title: 'Hono API',
+                title: 'Honey Bear API',
                 version: '1.0.0',
-                description: 'YACMS API',
+                description: 'Honey Bear API',
             },
             servers: [
                 { url: 'http://localhost:9000/api', description: 'Local Server' },
@@ -72,7 +73,7 @@ api.get(
     Scalar({
         url: '/openapi.json',
         theme: 'purple',
-        pageTitle: 'Awesome API',
+        pageTitle: 'Honey Bear API',
     })
 )
 

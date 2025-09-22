@@ -10,9 +10,16 @@ import {AddProductCommandSchema, ProductArraySchema, ProductResponseSchema} from
 
 const productRouter = new Hono<App.Api>();
 
+const PRODUCT_TAG = ['Products'];
+const commonProductConfig = {
+    tags: PRODUCT_TAG,
+};
+
+
 productRouter.get(
     '/',
     describeRoute({
+        ...commonProductConfig,
         description: 'Get products list',
         responses: {
             200: {
@@ -50,6 +57,7 @@ productRouter.get(
 productRouter.get(
     '/:id',
     describeRoute({
+        ...commonProductConfig,
         description: 'Get products details by id',
         responses: {
             200: {
@@ -85,6 +93,7 @@ productRouter.get(
 
 productRouter.post('/',
     describeRoute({
+        ...commonProductConfig,
         description: 'Create a new product',
         responses: {
             201: {

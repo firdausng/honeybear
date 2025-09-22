@@ -2,11 +2,29 @@
 import {vValidator} from "@hono/valibot-validator";
 import {GetUserByEmailAndPasswordHandler} from "$lib/server/users/getUserByEmail";
 import {ValidateUserEmailSchema} from "$lib/server/auth/schema";
+import {describeRoute, resolver, } from "hono-openapi";
 
 const authRouter = new Hono<App.Api>();
 
+const AUTH_TAG = ['Auth'];
+const commonAuthConfig = {
+    tags: AUTH_TAG,
+};
+
 authRouter.post(
-    '/validateUserEmail', 
+    '/validate-user-email',
+    describeRoute({
+        ...commonAuthConfig,
+        description: 'Validate user email and password',
+        responses: {
+            200: {
+                description: 'Successful response',
+                content: {
+                    'application/json': { schema: resolver(ValidateUserEmailSchema) },
+                },
+            },
+        },
+    }),
     vValidator('json', ValidateUserEmailSchema), 
     async (c) => {
     const body = c.req.valid('json');

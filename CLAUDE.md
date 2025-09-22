@@ -1,7 +1,7 @@
-# Bikesynergy API - Claude Code Reference
+# Honey Bear API - Claude Code Reference
 
 ## Project Overview
-This is a SvelteKit 5 application deployed on Cloudflare Workers for bike synergy management. It uses TypeScript, Tailwind CSS, and Drizzle ORM with SQLite database.
+This is a SvelteKit 5 application deployed on Cloudflare Workers for Shop CMS management. It uses TypeScript, Tailwind CSS, and Drizzle ORM with SQLite database.
 
 ## Tech Stack
 - **Framework**: SvelteKit 5 with TypeScript

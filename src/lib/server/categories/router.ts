@@ -4,10 +4,30 @@ import {
     AddCategoryCommandHandler,
 } from "$lib/server/categories/addCategory";
 import {AddCategorySchema} from "$lib/server/categories/schema";
+import {describeRoute, resolver} from "hono-openapi";
 
-const authRouter = new Hono<App.Api>();
+const categoryRouter = new Hono<App.Api>();
 
-authRouter.post('/validateUserEmail', vValidator('json', AddCategorySchema), async (c) => {
+const CATEGORY_TAG = ['Categories'];
+const commonCategoryConfig = {
+    tags: CATEGORY_TAG,
+};
+categoryRouter.post(
+    '/add-category',
+    describeRoute({
+        ...commonCategoryConfig,
+        description: 'Add category',
+        responses: {
+            200: {
+                description: 'Successful response',
+                content: {
+                    'application/json': { schema: resolver(AddCategorySchema) },
+                },
+            },
+        },
+    }),
+    vValidator('json', AddCategorySchema), 
+    async (c) => {
     const body = c.req.valid('json');
     
     const handler = new AddCategoryCommandHandler(c.env.DB);
@@ -22,4 +42,4 @@ authRouter.post('/validateUserEmail', vValidator('json', AddCategorySchema), asy
     return c.json(user, 200);
 })
 
-export default authRouter
+export default categoryRouter
