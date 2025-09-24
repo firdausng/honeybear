@@ -396,9 +396,9 @@
                                                         {...$constraints.status}
                                                 >
                                                     <option value="">Select status</option>
-                                                    <option value="active">🟢 Active</option>
-                                                    <option value="inactive">⚫ Inactive</option>
-                                                    <option value="out_of_stock">🔴 Out of Stock</option>
+                                                    <option value="active">Active</option>
+                                                    <option value="inactive">Inactive</option>
+                                                    <option value="out_of_stock">Out of Stock</option>
                                                 </select>
                                                 <!-- Custom dropdown arrow -->
                                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -424,7 +424,7 @@
                                             <div class="flex items-center space-x-3 p-4 {$errors.featured ? 'bg-red-50 border-red-200' : 'bg-background-alt border-border-input'} rounded-xl border transition-colors duration-200">
                                                 <Checkbox.Root
                                                         id="featured"
-                                                        class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-border-input bg-background-alt data-[state=checked]:border-accent data-[state=checked]:bg-accent'} hover:border-border-card transition-all duration-200"
+                                                        class="flex size-6 items-center justify-center rounded-lg border-2 {$errors.featured ? 'border-red-300 bg-red-50 data-[state=checked]:border-red-500 data-[state=checked]:bg-red-500' : 'border-border-input bg-background-alt data-[state=checked]:border-accent data-[state=checked]:bg-accent-foreground'} hover:border-border-card transition-all duration-200"
                                                         name="featured"
                                                         aria-invalid={$errors.featured ? 'true' : undefined}
                                                         aria-describedby={$errors.featured ? 'featured-error' : undefined}
