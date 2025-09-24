@@ -2,7 +2,7 @@
     let { data } = $props();
 </script>
 
-<h1>Hellow</h1>
+<h1>Hello</h1>
 <pre>
     {JSON.stringify(data.activeUser, null, 2)}
 </pre>

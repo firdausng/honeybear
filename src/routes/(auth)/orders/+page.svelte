@@ -1,13 +1,7 @@
 <script lang="ts">
-    import List from "phosphor-svelte/lib/List";
     import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
-    import Plus from "phosphor-svelte/lib/Plus";
-    import PencilLine from "phosphor-svelte/lib/PencilLine";
-    import Trash from "phosphor-svelte/lib/Trash";
-    import Package from "phosphor-svelte/lib/Package";
     import ShoppingCartSimple from "phosphor-svelte/lib/ShoppingCartSimple";
-    import UserSquare  from "phosphor-svelte/lib/UserSquare";
-    import Eye  from "phosphor-svelte/lib/Eye";
+
     import OrderDetail from "./order-detail.svelte";
     
     let { data } = $props();
@@ -25,7 +19,7 @@
         });
     });
 
-    const statuses = ['all', 'pending', 'processing', 'shipped', 'delivered', 'cancelled'];
+    const statuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
 
     const getStatusColor = (status: string) => {
         switch (status) {
@@ -36,11 +30,6 @@
             case 'cancelled': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400';
             default: return 'bg-muted text-foreground-alt';
         }
-    };
-
-    const updateOrderStatus = (orderId: string, newStatus: string) => {
-        // In a real app, this would make an API call
-        console.log(`Updating order ${orderId} to status ${newStatus}`);
     };
 
 </script>
@@ -62,9 +51,12 @@
                 bind:value={statusFilter}
                 class="px-4 py-2 border border-border-input bg-background-alt text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-auto theme-transition"
         >
+            <option value="all">
+                All Statuses
+            </option>
             {#each statuses as status(status)}
                 <option value={status}>
-                    {status === 'all' ? 'All Statuses' : status.charAt(0).toUpperCase() + status.slice(1)}
+                    {status.charAt(0).toUpperCase() + status.slice(1)}
                 </option>
             {/each}
         </select>
@@ -123,26 +115,12 @@
                             ${order.total.toFixed(2)}
                         </td>
                         <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
-                            <select
-                                    value={order.status}
-                                    onchange={(e) => updateOrderStatus(order.id, e.target.value)}
-                                    class={`text-xs font-semibold rounded-full px-2 py-1 border-0 focus:outline-none focus:ring-2 focus:ring-accent w-full sm:w-auto theme-transition ${getStatusColor(order.status)}`}
-                            >
-                                <option value="pending">Pending</option>
-                                <option value="processing">Processing</option>
-                                <option value="shipped">Shipped</option>
-                                <option value="delivered">Delivered</option>
-                                <option value="cancelled">Cancelled</option>
-                            </select>
+                            <span class={`text-xs font-semibold rounded-full px-2 py-1 border-0 focus:outline-none focus:ring-2 focus:ring-accent w-full sm:w-auto theme-transition ${getStatusColor(order.status)}`}>
+                               {order.status} 
+                            </span>
                         </td>
                         <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <OrderDetail order={order} />
-<!--                            <button-->
-<!--                                    onclick={() => onViewOrder(order)}-->
-<!--                                    class="text-blue-600 hover:text-blue-900 transition-colors"-->
-<!--                            >-->
-<!--                                <Eye class="w-4 h-4" />-->
-<!--                            </button>-->
                         </td>
                     </tr>    
                 {/each}
