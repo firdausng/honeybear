@@ -53,7 +53,7 @@ class="pl-10 pr-4 py-2 border border-border-input bg-background-alt text-foregro
 
             <button
                 onclick={themeStore.toggleTheme}
-class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast"
+class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast cursor-pointer"
                 aria-label="Toggle theme"
             >
                 {#if themeStore.current === 'light'}
@@ -63,7 +63,7 @@ class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast"
                 {/if}
             </button>
 
-<button class="relative p-2 text-muted-foreground hover:text-foreground theme-transition-fast">
+<button class="relative p-2 text-muted-foreground hover:text-foreground theme-transition-fast cursor-pointer" aria-label="Notifications">
                 <Bell class="w-5 h-5" />
                 <span class="absolute top-0 right-0 w-2 h-2 bg-destructive rounded-full"></span>
             </button>
