@@ -27,7 +27,7 @@
                     <!-- Current page - not a link -->
                     <span class="flex items-center space-x-1 text-gray-900 dark:text-gray-200 font-medium">
                         {#if item.icon}
-                            <svelte:component this={item.icon} class="w-4 h-4" />
+                            <item.icon class="w-4 h-4" />
                         {/if}
                         <span>{item.label}</span>
                     </span>
@@ -38,7 +38,7 @@
                         class="flex items-center space-x-1 hover:text-gray-900 transition-colors"
                     >
                         {#if item.icon}
-                            <svelte:component this={item.icon} class="w-4 h-4" />
+                            <item.icon class="w-4 h-4" />
                         {/if}
                         <span>{item.label}</span>
                     </a>

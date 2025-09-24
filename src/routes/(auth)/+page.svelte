@@ -1,11 +1,4 @@
 <script lang="ts">
-    import {authManager} from "$lib/auth-data.svelte";
-    
-   const abc = {
-       title: "Total Orders",
-       
-   }
-    
     let { data } = $props();
 </script>
 

@@ -1,9 +1,5 @@
 <script lang="ts">
-    import { Button } from "bits-ui";
     import ShieldWarning from "phosphor-svelte/lib/ShieldWarning";
-    import HouseSimple from "phosphor-svelte/lib/HouseSimple";
-    import SignIn from "phosphor-svelte/lib/SignIn";
-    import {goto} from "$app/navigation";
     
     let { data } = $props();
 </script>

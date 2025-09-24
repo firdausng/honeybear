@@ -5,8 +5,8 @@
     import FloppyDisk from "phosphor-svelte/lib/FloppyDisk";
     import Check from "phosphor-svelte/lib/Check";
     import Minus from "phosphor-svelte/lib/Minus";
-    // import User from "phosphor-svelte/lib/User.svelte";
-    // import MapPin from "phosphor-svelte/lib/MapPin.svelte";
+    import User from "phosphor-svelte/lib/User";
+    import MapPin from "phosphor-svelte/lib/MapPin";
     import X from "phosphor-svelte/lib/X";
     import PencilLine from "phosphor-svelte/lib/PencilLine";
     import SuperDebug, {type Infer, superForm, type SuperValidated} from "sveltekit-superforms";
@@ -36,7 +36,7 @@
         }
     };
 
-    const {form, errors, constraints, enhance, reset, message, tainted, allErrors} = superForm(formData, {
+    const {form, errors, constraints, enhance, reset, message, allErrors} = superForm(formData, {
         resetForm: false,
         taintedMessage: null,
         invalidateAll: false,

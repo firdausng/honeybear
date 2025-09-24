@@ -16,6 +16,8 @@
     let invited = $state("");
 
     let { activeUser }: {activeUser: User} = $props();
+    
+    let avatar = $derived(activeUser.profilePictureUrl ?? 'https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff');
 </script>
 
 <DropdownMenu.Root>
@@ -29,7 +31,7 @@
             <div
                     class="flex h-full w-full items-center justify-center overflow-hidden rounded-full border-2 border-transparent"
             >
-                <Avatar.Image src="{activeUser.profilePictureUrl ?? 'https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff'}" alt="{activeUser.firstName}" />
+                <Avatar.Image src={avatar} />
                 <Avatar.Fallback class="border-muted border">HB</Avatar.Fallback>
             </div>
         </Avatar.Root>
