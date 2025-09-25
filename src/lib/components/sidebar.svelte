@@ -18,7 +18,7 @@
 
 </script>
 
-<div class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-background shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none theme-transition">
+<div class="fixed lg:relative inset-y-0 left-0 z-50 w-64 bg-background shadow-lg transform transition-transform duration-300 ease-in-out lg:transform-none theme-transition h-full flex flex-col {sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}">
     <div class="lg:hidden absolute top-4 right-4">
         <button
                 onclick={()=> {sidebarOpen = false}}
@@ -36,7 +36,7 @@ class="p-2 text-muted-foreground hover:text-foreground theme-transition-fast">
         </div>
     </div>
 
-    <nav class="mt-6">
+    <nav class="flex-1 overflow-y-auto mt-6">
         {#each menuItems as item}
             <a
                 href={item.path}

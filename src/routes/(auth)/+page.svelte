@@ -1,4 +1,7 @@
 <script lang="ts">
+    import StickyModeToggle from "$lib/components/sticky-mode-toggle.svelte";
+    import { stickyModeStore } from "$lib/sticky-mode.svelte";
+
     let { data } = $props();
 </script>
 
@@ -7,7 +10,25 @@
 <!--    {JSON.stringify(data.activeUser, null, 2)}-->
 <!--</pre>-->
 
-<div class="space-y-6 theme-transition">
+<div class="flex flex-col h-full">
+    <!-- Header -->
+    <div class="{stickyModeStore.isSticky ? 'sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border-card z-10' : ''} {stickyModeStore.isSticky ? 'pb-4' : 'pb-6'}">
+        <!-- Page Header -->
+        <div class="flex items-center justify-between">
+            <div class="{stickyModeStore.isSticky ? 'space-y-1' : 'space-y-0'}">
+                <div class="flex items-center space-x-3">
+                    <h1 class="{stickyModeStore.isSticky ? 'text-xl' : 'text-2xl'} font-bold text-foreground">Dashboard</h1>
+                    <StickyModeToggle size="sm" showLabel={false} />
+                </div>
+                {#if !stickyModeStore.isSticky}
+                    <p class="text-foreground-alt">Welcome back! Here's what's happening with your business</p>
+                {/if}
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="flex-1 space-y-6">
     <!--    Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <!--{@render StatCard({-->
@@ -105,6 +126,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </div>
 

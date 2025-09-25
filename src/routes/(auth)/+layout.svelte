@@ -43,6 +43,7 @@
         return {
             title: currentSection.label,
             onMenuClick: () => {
+                sidebarOpen = !sidebarOpen;
             }
         }
     });
@@ -52,21 +53,39 @@
 <svelte:head>
 </svelte:head>
 
-<div class="min-h-screen bg-background lg:flex theme-transition">
-    <!--    <Navbar logoutLink="/logout" activeUser={data.activeUser}/>-->
+<div class="h-screen bg-background flex theme-transition overflow-hidden">
     {#if data.activeUser}
-        <Sidebar activeUser={data.activeUser} bind:activeSection={currentSection} menuItems={menuItems} bind:sidebarOpen={sidebarOpen}/>
-        <div class="flex-grow bg-background theme-transition">
-            <Header activeUser={data.activeUser} header={header}/>
-            {#key data.url}
-                <main
+        <!-- Mobile Overlay -->
+        {#if sidebarOpen}
+            <div
+                class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+                onclick={() => sidebarOpen = false}
+            ></div>
+        {/if}
+
+        <!-- Fixed Sidebar -->
+        <div class="flex-shrink-0">
+            <Sidebar activeUser={data.activeUser} bind:activeSection={currentSection} menuItems={menuItems} bind:sidebarOpen={sidebarOpen}/>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col min-w-0">
+            <!-- Fixed Header -->
+            <div class="flex-shrink-0">
+                <Header activeUser={data.activeUser} header={header}/>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto">
+                {#key data.url}
+                    <main
                         in:fly={{ x: -200, duration: 100, }}
-                        class="flex-1 p-4 lg:p-6 mx-auto container">
-                    {@render children?.()}
-                </main>
-            {/key}
+                        class="p-4 lg:p-6 mx-auto container">
+                        {@render children?.()}
+                    </main>
+                {/key}
+            </div>
         </div>
     {/if}
-    
 </div>
 

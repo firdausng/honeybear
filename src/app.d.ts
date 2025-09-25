@@ -88,6 +88,25 @@ declare global {
             price: number;
             total: number;
         }
+
+        export interface Customer {
+            id: string;
+            name: string;
+            email: string;
+            phone?: string;
+            totalOrders: number;
+            totalSpent: number;
+            status: 'active' | 'inactive';
+            lastOrderDate?: string;
+            createdAt: string;
+            shippingAddress?: {
+                street: string;
+                city: string;
+                state: string;
+                zip: string;
+                country: string;
+            };
+        }
     }
 }
 

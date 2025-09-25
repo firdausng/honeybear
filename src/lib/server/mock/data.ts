@@ -176,3 +176,112 @@ export const mockOrders: Client.Order[] = [
         }
     }
 ];
+
+export const mockCustomers: Client.Customer[] = [
+    {
+        id: 'CUST-001',
+        name: 'John Smith',
+        email: 'john.smith@email.com',
+        phone: '+1 (555) 123-4567',
+        totalOrders: 3,
+        totalSpent: 749.97,
+        status: 'active',
+        lastOrderDate: '2024-01-25T14:30:00Z',
+        createdAt: '2024-01-10T09:00:00Z',
+        shippingAddress: {
+            street: '123 Main St',
+            city: 'New York',
+            state: 'NY',
+            zip: '10001',
+            country: 'USA'
+        }
+    },
+    {
+        id: 'CUST-002',
+        name: 'Sarah Johnson',
+        email: 'sarah.j@email.com',
+        phone: '+1 (555) 234-5678',
+        totalOrders: 2,
+        totalSpent: 599.98,
+        status: 'active',
+        lastOrderDate: '2024-01-24T09:15:00Z',
+        createdAt: '2024-01-05T14:20:00Z',
+        shippingAddress: {
+            street: '456 Oak Ave',
+            city: 'Los Angeles',
+            state: 'CA',
+            zip: '90210',
+            country: 'USA'
+        }
+    },
+    {
+        id: 'CUST-003',
+        name: 'Michael Brown',
+        email: 'mike.brown@email.com',
+        phone: '+1 (555) 345-6789',
+        totalOrders: 1,
+        totalSpent: 899.99,
+        status: 'active',
+        lastOrderDate: '2024-01-20T11:45:00Z',
+        createdAt: '2023-12-15T16:30:00Z',
+        shippingAddress: {
+            street: '789 Pine St',
+            city: 'Chicago',
+            state: 'IL',
+            zip: '60601',
+            country: 'USA'
+        }
+    },
+    {
+        id: 'CUST-004',
+        name: 'Emily Davis',
+        email: 'emily.davis@email.com',
+        phone: '+1 (555) 456-7890',
+        totalOrders: 1,
+        totalSpent: 449.99,
+        status: 'active',
+        lastOrderDate: '2024-01-25T16:20:00Z',
+        createdAt: '2024-01-20T10:15:00Z',
+        shippingAddress: {
+            street: '321 Elm St',
+            city: 'Miami',
+            state: 'FL',
+            zip: '33101',
+            country: 'USA'
+        }
+    },
+    {
+        id: 'CUST-005',
+        name: 'David Wilson',
+        email: 'david.wilson@email.com',
+        totalOrders: 0,
+        totalSpent: 0,
+        status: 'inactive',
+        createdAt: '2023-11-28T13:45:00Z',
+        shippingAddress: {
+            street: '654 Maple Dr',
+            city: 'Seattle',
+            state: 'WA',
+            zip: '98101',
+            country: 'USA'
+        }
+    },
+    {
+        id: 'CUST-006',
+        name: 'Lisa Anderson',
+        email: 'lisa.anderson@email.com',
+        phone: '+1 (555) 567-8901',
+        totalOrders: 5,
+        totalSpent: 1249.95,
+        status: 'active',
+        lastOrderDate: '2024-01-23T12:00:00Z',
+        createdAt: '2023-10-12T08:30:00Z',
+        shippingAddress: {
+            street: '987 Cedar Ln',
+            city: 'Austin',
+            state: 'TX',
+            zip: '73301',
+            country: 'USA'
+        }
+    }
+];
